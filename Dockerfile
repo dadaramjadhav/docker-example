@@ -1,6 +1,9 @@
-FROM maven
-WORKDIR /cs
-COPY . .
-RUN mvn clean  install
-COPY ./target/cs-1.1.jar cs-1.1.jar
-ENTRYPOINT ["java","-jar","cs-1.1.jar"]
+FROM openjdk:8-jdk-alpine
+
+ARG JAR_FILE=target/*.jar
+
+WORKDIR /opt/app
+
+COPY ${JAR_FILE} app.jar
+
+ENTRYPOINT ["java","-jar","app.jar"]
