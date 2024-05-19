@@ -18,7 +18,7 @@ public class CustomerController {
 	
 	@GetMapping(value = {"/", "/welcome"})
 	public String welcome() {
-		return "Welcome.... IP : "+ serverPort + "  address: "+ request.getRemoteAddr()+ "  address: " + request.getRemoteHost() + "  address: "+ request.getLocalAddr() ;
+		return "Welcome.... IP (v1): "+ serverPort + "  address: "+ request.getRemoteAddr()+ "  address: " + request.getRemoteHost() + "  address: "+ request.getLocalAddr() ;
 	}
 
 	@GetMapping(value = { "/customers/"})
