@@ -1,0 +1,13 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/upheld-beach-417514/IMAGE', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/upheld-beach-417514/IMAGE']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'myname', '--image', 'gcr.io/upheld-beach-417514/IMAGE', '--region', 'us-central1']
+images:
+- gcr.io/upheld-beach-417514/IMAGE
