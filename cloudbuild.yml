@@ -1,6 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['DOCKER_BUILDKIT=1 build', '-t', 'gcr.io/upheld-beach-417514/dm', '-f', 'Dockerfile', '.']
+  args: ['DOCKER_BUILDKIT=1']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/upheld-beach-417514/dm', '-f', 'Dockerfile', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/upheld-beach-417514/dm']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
