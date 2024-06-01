@@ -11,5 +11,5 @@ steps:
   - run
   - --filename=deployment.yml
   - --image=gcr.io/$PROJECT_ID/dm:$COMMIT_SHA
-  - --location=us-central1
+  - --location=us-central1-c
   - --cluster=cluster-2
