@@ -1,8 +1,15 @@
 steps:
-# deploy container image to GKE
+  # build the container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "gcr.io/$PROJECT_ID/dm:$COMMIT_SHA", "."]
+  # push container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["push", "gcr.io/$PROJECT_ID/dm:$COMMIT_SHA"]
+  # deploy container image to GKE
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
   - --filename=deployment.yml
-  - --location=us-central1-c
+  - --image=gcr.io/$PROJECT_ID/dm:$COMMIT_SHA
+  - --location=us-central1
   - --cluster=cluster-2
