@@ -1,10 +1,10 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/upheld-beach-417514/IMAGE', '.']
+  args: ['build', '-t', 'gcr.io/upheld-beach-417514/dm', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/upheld-beach-417514/IMAGE']
+  args: ['push', 'gcr.io/upheld-beach-417514/dm']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'myname', '--image', 'gcr.io/upheld-beach-417514/IMAGE', '--region', 'us-central1']
+  args: ['run', 'deploy', 'myname', '--image', 'gcr.io/upheld-beach-417514/dm', '--region', 'us-central1']
 images:
-- gcr.io/upheld-beach-417514/IMAGE
+- gcr.io/upheld-beach-417514/dm
