@@ -3,7 +3,8 @@ WORKDIR /example
 COPY . .
 RUN mvn clean  install
 
-RUN ls
+COPY ./target/cs-1.1.jar app.jar
 
-COPY targe/cs-1.1.jar app.jar
+RUN ls 
+
 ENTRYPOINT ["java","-jar","app.jar"]
