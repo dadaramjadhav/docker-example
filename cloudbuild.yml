@@ -1,10 +1,23 @@
-steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/upheld-beach-417514/dm', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/upheld-beach-417514/dm']
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'myname', '--image', 'gcr.io/upheld-beach-417514/dm', '--region', 'us-central1']
-images:
-- gcr.io/upheld-beach-417514/dm
+  steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/upheld-beach-41751/dm:$COMMIT_SHA', '.']
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/upheld-beach-417514/dm:$COMMIT_SHA']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+    - 'run'
+    - 'deploy'
+    - 'dm'
+    - '--image'
+    - 'gcr.io/upheld-beach-417514/dm:$COMMIT_SHA'
+    - '--region'
+    - 'us-central1'
+    - '--ingress'
+    - 'all'
+    - '--allow-unauthenticated'
+  images:
+  - 'gcr.io/upheld-beach-417514/dm:$COMMIT_SHA'
