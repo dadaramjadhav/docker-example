@@ -14,7 +14,7 @@ RUN mvn clean  install
 RUN pwd
 RUN ls /example/target
 
-COPY /example/target/cs-1.1.jar app.jar
+# COPY /example/target/cs-1.1.jar app.jar
 
 RUN pwd
 RUN ls
