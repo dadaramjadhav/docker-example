@@ -19,4 +19,4 @@ COPY /example/target/cs-1.1.jar app.jar
 RUN pwd
 RUN ls
 
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","./target/cs-1.1.jar"]
