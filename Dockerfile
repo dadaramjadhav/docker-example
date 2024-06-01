@@ -8,8 +8,8 @@ RUN mvn clean install -Dmaven.test.skip=true
 
 FROM maven:3.8.3-openjdk-17
 WORKDIR /opt/demo
-COPY --from=stage1 /opt/demo/target/demo.jar /opt/demo
-
+COPY --from=stage1 /opt/demo/target/cs-1.1.jar /opt/demo/app.jar
+ENTRYPOINT ["java","-jar","/opt/demo/app.jar"]
 
 
 
