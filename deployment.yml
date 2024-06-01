@@ -15,10 +15,6 @@ spec:
       containers:
         - name: register-app
           image:  gcr.io/upheld-beach-417514/dm@sha256:1e03771db36fb906edd27da08c2bc373b77068d347837488d28dafc83386a42a
-          resources:
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
           ports:
             - containerPort: 8090
 
