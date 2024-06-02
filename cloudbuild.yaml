@@ -11,4 +11,4 @@ steps:
   # deploy container image to GKE
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'myservice', '--image', 'gcr.io/$PROJECT_ID/dm:$COMMIT_SHA', '--region', 'us-central1']
+  args: ['run', 'deploy', 'myservice', '--image', 'gcr.io/$PROJECT_ID/dm:$COMMIT_SHA', '--port=8090', '--region', 'us-central1']
