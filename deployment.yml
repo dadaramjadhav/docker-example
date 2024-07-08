@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: register-app
-          image:  dadaramjadhav/de:latest
+          image:  dadaramjadhav/ke
           ports:
             - containerPort: 8090
 
